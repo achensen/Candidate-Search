@@ -48,29 +48,46 @@ const CandidateSearch = () => {
 
   const handleAddUser = () => {
     setCurrentIndex(currentIndex + 1);
-    let localStorageUsers: any= localStorage.getItem('users') 
-    if (localStorageUsers){
-      localStorageUsers= JSON.parse(localStorageUsers)
+    let localStorageUsers: any = localStorage.getItem("users");
+    if (localStorageUsers) {
+      localStorageUsers = JSON.parse(localStorageUsers);
     } else {
-      localStorageUsers= []
+      localStorageUsers = [];
     }
 
-    localStorageUsers.push(currentUser)
-    localStorage.setItem('users',JSON.stringify(localStorageUsers))
-
+    localStorageUsers.push(currentUser);
+    localStorage.setItem("users", JSON.stringify(localStorageUsers));
   };
   const handlePassUser = () => {
     setCurrentIndex(currentIndex + 1);
   };
 
   return (
-    <div>
-      <h1>CandidateSearch</h1>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        minHeight: "100vh",
+      }}
+    >
+      <h1
+        style={{
+          textAlign: "center",
+          fontSize: "55px",
+          fontWeight: "bold",
+          marginBottom: "20px",
+        }}
+      >
+        Candidate Search
+      </h1>
       {users[currentIndex] ? (
         <>
           <Card user={currentUser} />
-          <button onClick={handleAddUser}>+</button>
-          <button onClick={() => handlePassUser()}>-</button>
+          <div className="button-container">
+            <button onClick={handleAddUser}>+</button>
+            <button onClick={() => handlePassUser()}>-</button>
+          </div>
         </>
       ) : (
         <div>No more Candidates Available</div>

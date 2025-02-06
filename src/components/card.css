@@ -1,15 +1,29 @@
 .card {
-    height: 80vh;
-    width: 25vw;
+    height: 500px;
+    width: 300px;
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: black;
-
+    margin-bottom: 20px;
 }
 
 .card > img {
     /* height:50%; */
-    width:100%;
+    /* width:100%;
     object-fit: contain;
+    display:flex;
+    justify-content: center; */
+    width: 100%;
+    object-fit: contain;
+};
+
+.button-container {
+    display: flex;
+    gap: 10px; /* Space between buttons */
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px 20px;
 }
