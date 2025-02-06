@@ -76,7 +76,9 @@ const CandidateSearch = () => {
           textAlign: "center",
           fontSize: "55px",
           fontWeight: "bold",
+          padding: "10px",
           marginBottom: "20px",
+          marginTop: "10px",
         }}
       >
         Candidate Search

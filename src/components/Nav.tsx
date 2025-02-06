@@ -8,16 +8,16 @@ const Nav: React.FC = () => {
         display: "flex",
         width: "100vw",
         boxSizing: "border-box",
-        padding: "20px",
+        padding: "50px 50px 20px 50px",
         justifyContent: "left",
       }}
     >
       <NavLink
         to="/"
         style={{
-          marginRight: "35px",
+          marginRight: "50px",
           color: "white",
-          fontSize: "14px",
+          fontSize: "20px",
         }}
       >
         Home
@@ -26,7 +26,7 @@ const Nav: React.FC = () => {
         to="/SavedCandidates"
         style={{
           color: "white",
-          fontSize: "14px",
+          fontSize: "20px",
         }}
       >
         Potential Candidates
