@@ -4,7 +4,7 @@ import './card.css'
 interface CardProps {
     user: Candidate;
 }
-
+//Access items from Candidate Interface
 const Card = ({user}:CardProps) => {
   return (
     <div className="card">

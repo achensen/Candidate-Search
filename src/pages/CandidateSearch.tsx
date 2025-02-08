@@ -9,6 +9,7 @@ interface Users {
 
 const CandidateSearch = () => {
   const [users, setUsers] = useState<Users[]>([]);
+  //Details to display for each candidate
   const [currentUser, setCurrentUser] = useState<Candidate>({
     name: null,
     login: "",
@@ -19,12 +20,12 @@ const CandidateSearch = () => {
     company: null,
   });
   const [currentIndex, setCurrentIndex] = useState<number>(0);
-
+//setting up retrieval of github api information and 
   const getAllUsers = async () => {
     const userData = await searchGithub();
     setUsers(userData);
   };
-
+  
   const getUser = async () => {
     if (!users[currentIndex]?.login) return;
     const userData = await searchGithubUser(users[currentIndex].login);
@@ -37,7 +38,7 @@ const CandidateSearch = () => {
   }, []);
 
   useEffect(() => {
-    // console.log("users:", users);
+    
     if (users.length === 0) return;
     getUser();
   }, [users, currentIndex]);
@@ -48,6 +49,7 @@ const CandidateSearch = () => {
 
   const handleAddUser = () => {
     setCurrentIndex(currentIndex + 1);
+    //access to already saved users in local storage
     let localStorageUsers: any = localStorage.getItem("users");
     if (localStorageUsers) {
       localStorageUsers = JSON.parse(localStorageUsers);
@@ -58,6 +60,7 @@ const CandidateSearch = () => {
     localStorageUsers.push(currentUser);
     localStorage.setItem("users", JSON.stringify(localStorageUsers));
   };
+  //allows user to move past a canidate without saving them to local storage
   const handlePassUser = () => {
     setCurrentIndex(currentIndex + 1);
   };
@@ -92,6 +95,7 @@ const CandidateSearch = () => {
           </div>
         </>
       ) : (
+        //displays when there are no more candidates available to choose from 
         <div>No more Candidates Available</div>
       )}
     </div>
