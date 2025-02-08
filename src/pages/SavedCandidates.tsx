@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import type { Candidate } from "../interfaces/Candidate.interface";
 import "./savedCandidates.css";
 
+//Saves candidates to local Storage, or removes them from the array
 const SavedCandidates = () => {
   const [savedUsers, setSavedUsers] = useState<Candidate[]>([]);
   const readLocalStorage = () => {
@@ -20,16 +21,17 @@ const SavedCandidates = () => {
     localStorage.setItem("users", JSON.stringify(filteredUsers));
     setSavedUsers(filteredUsers);
   };
+  //reads local storage on page opening 
   useEffect(() => {
     const localStorageUsers = readLocalStorage();
     setSavedUsers(localStorageUsers);
   }, []);
 
+  //Grid styling for user information
   return (
     <div className="savedCandidatesContainer">
       <h1>Potential Candidates</h1>
       <div className="gridTable">
-        {/* Headers */}
         <div className="tableRow header">
           <div>Image</div>
           <div>Name</div>
@@ -40,7 +42,6 @@ const SavedCandidates = () => {
           <div>Reject</div>
         </div>
 
-        {/* Table Rows */}
         {savedUsers.length > 0 ? (
           savedUsers.map((user) => (
             <div key={user.login} className="tableRow">
@@ -77,6 +78,7 @@ const SavedCandidates = () => {
               </div>
             </div>
           ))
+          //Displays when all candidates have been removed from local storage
         ) : (
           <div className="noCandidates">No Potential Candidates</div>
         )}
@@ -86,58 +88,3 @@ const SavedCandidates = () => {
 };
 
 export default SavedCandidates;
-//   return (
-//     <div className="savedCandidatesContainer">
-//       <h1>Potential Candidates</h1>
-//       <div className="gridContainer">
-//         {savedUsers.length > 0 ? (
-//           savedUsers.map((user) => (
-//             <div key={user.login} className="gridItem">
-//               <div className="gridRow">
-//                 <img src={user.avatar_url} alt="User Avatar" className="userImage" />
-//                 <div className="userInfo">
-//                   <div className="userName">{user.name || user.login}</div>
-//                   <div className="userDetails">Location: {user.location || "N/A"}</div>
-//                   <div className="userDetails">Email: {user.email || "N/A"}</div>
-//                   <div className="userDetails">Company: {user.company || "N/A"}</div>
-//                   <div className="userDetails">Repository: {user.html_url || "No Repository"}</div>
-//                 </div>
-//                 <button className="removeButton" onClick={() => removeUser(user.login)}>
-//                   x
-//                 </button>
-//               </div>
-//             </div>
-//           ))
-//         ) : (
-//           <div className="noCandidates">No Potential Candidates</div>
-//         )}
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default SavedCandidates;
-
-//   return (
-//     <>
-//       <h1>Potential Candidates</h1>
-//       <div>
-//         {savedUsers.length > 0 ? (
-//           savedUsers.map((user) => {
-//             return (
-//               <div key={user.login} className="savedUserCard">
-//                 <div>{user.login}</div>
-//                 <img src={user.avatar_url} alt="" />
-//                 <button onClick={() => removeUser(user.login)}>-</button>
-//               </div>
-//             );
-//           })
-//         ) : (
-//           <div>No Potential Candidates</div>
-//         )}
-//       </div>
-//     </>
-//   );
-// };
-
-// export default SavedCandidates;

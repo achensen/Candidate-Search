@@ -1,4 +1,4 @@
-// TODO: Create an interface for the Candidate objects returned by the API name, username, location, avatar, email, html_url, and company
+// interface used for API canidate information
 export interface Candidate{
     name: string | null;
     login: string;
